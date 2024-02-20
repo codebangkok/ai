@@ -3,6 +3,7 @@
 ### Generative AI Tools
 - OpenAI
     - Web: https://chat.openai.com
+    - Playground: https://platform.openai.com/playground
     - Mobile: ChatGPT
 - Copilot
     - Web: https://bing.com/chat
