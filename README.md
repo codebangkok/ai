@@ -13,5 +13,3 @@
     - Mobile: Google (iOS), Gemini (Android)
 
 
-### Prompt Engineering
-
