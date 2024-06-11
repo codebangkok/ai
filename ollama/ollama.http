@@ -1,0 +1,11 @@
+POST http://192.168.2.44:8080/api/chat
+
+{
+    "model": "gemma:2b",
+    "messages": [
+        {
+            "role": "user",
+            "content": "Write a tagline for Coffee Shop"
+        }
+    ]
+}
