@@ -1,11 +1,11 @@
-POST http://192.168.2.44:8080/api/chat
+POST http://localhost:11434/api/chat
 
 {
-    "model": "gemma:2b",
+    "model": "gemma",
     "messages": [
         {
             "role": "user",
-            "content": "Write a tagline for Coffee Shop"
+            "content": "why sky is blue?"
         }
     ]
 }

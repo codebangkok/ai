@@ -1,15 +1,20 @@
-version: '3.9'
 services:
-  ollama:
+  #https://hub.docker.com/r/ollama/ollama
+  ai:
     image: ollama/ollama
     container_name: ollama
     runtime: nvidia
-    environment:
-      - NVIDIA_VISIBLE_DEVICES=all    
     ports:
       - 11434:11434
     volumes:
-      - ollama:/root/.ollama    
+      - ollama:/root/.ollama
 
+  #https://docs.docker.com/desktop/gpu
+  benchmark:
+    image:  nvcr.io/nvidia/k8s/cuda-sample:nbody
+    container_name: nbody
+    runtime: nvidia
+    command: nbody -gpu -benchmark
+  
 volumes:
   ollama:

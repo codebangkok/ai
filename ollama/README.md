@@ -24,11 +24,3 @@
 - [codestral](https://ollama.com/library/codestral)
 - [starcoder2](https://ollama.com/library/starcoder2)
 
-```
-GitHUb CLI (gh) ### create public repo
-```
-
-```
-HTML ### classic snake game
-```
-
