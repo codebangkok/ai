@@ -2,7 +2,7 @@ services:
   #https://hub.docker.com/r/ollama/ollama
   ai:
     image: ollama/ollama
-    container_name: ollama
+    container_name: ai
     runtime: nvidia
     ports:
       - 11434:11434
@@ -12,9 +12,15 @@ services:
   #https://docs.docker.com/desktop/gpu
   benchmark:
     image:  nvcr.io/nvidia/k8s/cuda-sample:nbody
-    container_name: nbody
+    container_name: benchmark
     runtime: nvidia
-    command: nbody -gpu -benchmark
+    command: nbody -gpu -benchmark  
+
+  smi:
+    image:  ollama/ollama
+    runtime: nvidia
+    command: watch nvidia-smi
   
 volumes:
   ollama:
+  
