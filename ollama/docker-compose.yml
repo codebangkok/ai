@@ -8,6 +8,7 @@ services:
       - 11434:11434
     volumes:
       - ollama:/root/.ollama
+  #docker compose exec ai nvidia-smi
 
   #https://docs.docker.com/desktop/gpu
   benchmark:
@@ -16,11 +17,6 @@ services:
     runtime: nvidia
     command: nbody -gpu -benchmark  
 
-  smi:
-    image:  ollama/ollama
-    runtime: nvidia
-    command: watch nvidia-smi
-  
 volumes:
   ollama:
   
