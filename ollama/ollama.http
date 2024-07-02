@@ -1,11 +1,12 @@
 POST http://localhost:11434/api/chat
 
 {
-    "model": "gemma",
+    "model": "phi3",
     "messages": [
         {
             "role": "user",
             "content": "why sky is blue?"
         }
-    ]
+    ],
+    "stream": false
 }
