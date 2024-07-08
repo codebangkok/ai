@@ -4,6 +4,7 @@
 Continue is the leading open-source AI code assistant. You can connect any models and any context to build custom autocomplete and chat experiences inside VS Code and JetBrains
 
 - [Continue Website](https://www.continue.dev)
+- [genai-for-developers](https://github.com/GoogleCloudPlatform/genai-for-developers)
 
 ### Shortcut
 - <kbd>Cmd/Ctrl</kbd> + <kbd>L</kbd> Select code (New Session)
