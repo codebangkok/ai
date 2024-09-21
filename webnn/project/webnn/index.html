@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebNN</title>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.0-dev.20240804-ee2fe87e2d/dist/ort.all.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.20.0-dev.20240919-bd60add8ce/dist/ort.all.min.js"></script>
     <script src="index.js" type="module"></script>
 </head>
@@ -14,15 +13,17 @@
     <h3>Web Neural Network (WebNN) API<span id="info" style="color: red;"> - Not supported</span></h3>
     <div>
         Prompt: 
-        <input id="promptInput" type="text" placeholder="Enter your prompt" value="giant castle, mountains, sunrise, volumetric lighting" style="width: 90%">
+        <input id="promptInput" type="text" placeholder="Enter your prompt" value="giant castle, mountains, sunrise, volumetric lighting" style="width: 80%">
     </div>
     <div>
         <button id="loadModelButton">Load Models</button>
         <button id="releaseModelButton">Release Models</button>
         <button id="generateImageButton">Generate Image</button>
     </div>
-    <div id="status"></div>
-    <canvas id="canvas" width="512" height="512""></canvas>
+    <div>
+        <textarea id="status" style="width: 90%; height: 100px"></textarea>
+    </div>
+    <canvas id="canvas" width="512" height="512""></canvas>    
 </body>
 
 </html>

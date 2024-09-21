@@ -15,7 +15,8 @@ const getTokenizers = async (text) => {
 
 const log = (i) => {
     console.log(i);
-    status.innerText += `\n${i}`;
+    status.value += `\n${i}`;
+    status.scrollTop = status.scrollHeight;
 };
 
 const generateTensorFillValue = (dataType, shape, value) => {
