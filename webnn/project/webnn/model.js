@@ -1,60 +1,32 @@
 import * as Utils from "./utils.js"
 
 // Configuration...
+const executionProvider = "webnn"
+const deviceType = "gpu"
+
 const pixelWidth = 512;
 const pixelHeight = 512;
 const latentWidth = pixelWidth / 8;
 const latentHeight = pixelHeight / 8;
 const latentChannelCount = 4;
-const unetBatch = 2;
-const unetChannelCount = 4;
-const textEmbeddingSequenceLength = 77;
 
 const loadModel = async (modelName, modelPath) => {    
     let freeDimensionOverrides;
 
-    if (modelName == "text-encoder") {
-        freeDimensionOverrides = {
-            batch: unetBatch,
-            sequence: textEmbeddingSequenceLength,
-        };
-    }
-    else if (modelName == "unet") {
-        freeDimensionOverrides = {
-            batch: unetBatch,
-            channels: unetChannelCount,
-            height: latentHeight,
-            width: latentWidth,
-            sequence: textEmbeddingSequenceLength,
-            unet_sample_batch: unetBatch,
-            unet_sample_channels: unetChannelCount,
-            unet_sample_height: latentHeight,
-            unet_sample_width: latentWidth,
-            unet_time_batch: unetBatch,
-            unet_hidden_batch: unetBatch,
-            unet_hidden_sequence: textEmbeddingSequenceLength,
-        };
-    } else if (modelName == "vae-decoder") {
+    if (modelName == "vae-decoder") {
         freeDimensionOverrides = {
             batch: 1,
             channels: latentChannelCount,
             height: latentHeight,
             width: latentWidth,
         };
-    } else if (modelName == "safety-checker") {
-        freeDimensionOverrides = {
-            batch: 1,
-            channels: 3,
-            height: 224,
-            width: 224,
-        };
-    }
+    } 
 
     const options = {
         executionProviders: [
             {
-                name: "webnn",
-                deviceType: "gpu"
+                name: executionProvider,
+                deviceType: deviceType
             },
         ]
         ,freeDimensionOverrides: freeDimensionOverrides

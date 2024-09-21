@@ -1,4 +1,4 @@
-import { AutoTokenizer } from "https://cdn.jsdelivr.net/npm/@xenova/transformers@2.13.4";
+import { AutoTokenizer } from "https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2";
 
 const status = document.getElementById("status")
 

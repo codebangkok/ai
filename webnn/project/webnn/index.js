@@ -1,6 +1,6 @@
 import * as Utils from "./utils.js"
 import * as Model from "./model.js"
-import * as SD from "./stable_diffusion.js"
+import * as Generate from "./generate.js"
 
 const loadModelButton = document.getElementById("loadModelButton");
 const releaseModelButton = document.getElementById("releaseModelButton");
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     info.innerHTML = " - Supported";
     info.style.color = "green"
     
-    SD.displayEmptyCanvasPlaceholder()
+    Generate.displayEmptyCanvasPlaceholder()
 });
 
 loadModelButton.onclick = async () => {
@@ -47,9 +47,9 @@ releaseModelButton.onclick = async () => {
 }
 
 generateImageButton.onclick = async () => {
-    SD.displayEmptyCanvasPlaceholder();
+    Generate.displayEmptyCanvasPlaceholder();
 
-    let rgbPlanarPixels = await SD.executeStableDiffusion(textEncoderSession, unetSession, vaeDecoderSession);
-    SD.displayPlanarRGB(await rgbPlanarPixels.getData());
+    let rgbPlanarPixels = await Generate.executeStableDiffusion(textEncoderSession, unetSession, vaeDecoderSession);
+    Generate.displayPlanarRGB(await rgbPlanarPixels.getData());
 }
 
