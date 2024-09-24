@@ -57,10 +57,10 @@ const loadModel = async (modelName, modelPath) => {
     };
 
     Utils.log(`[Loading] ${modelPath}`);
-    let buffer = await getModelOPFS(modelName, modelPath);    
-    let session = await ort.InferenceSession.create(buffer, options);
-    Utils.log(`[Loaded] ${modelName}, size: ${buffer.byteLength.toLocaleString()}`)
-    return session
+    let modelBuffer = await getModelOPFS(modelName, modelPath);    
+    let modelSession = await ort.InferenceSession.create(modelBuffer, options);
+    Utils.log(`[Loaded] ${modelName}, size: ${modelBuffer.byteLength.toLocaleString()}`)
+    return modelSession
 }
 
 const releaseModels = async (textEncoderSession, unetSession, vaeDecoderSession) => {
