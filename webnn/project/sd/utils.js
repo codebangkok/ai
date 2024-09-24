@@ -1,14 +1,7 @@
-import { AutoTokenizer } from "https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2";
-
 const status = document.getElementById("status")
 
-let tokenizers;
-
-document.addEventListener("DOMContentLoaded", async () => {
-    tokenizers = await AutoTokenizer.from_pretrained("./tokenizer/resolve/main/");
-});
-
 const getTokenizers = async (text) => {
+    const tokenizers = await window.AutoTokenizer.from_pretrained("./tokenizer/resolve/main/");
     const { input_ids } = await tokenizers(text);
     return Array.from(input_ids.data, (number) => Number(number)).flat();
 }
