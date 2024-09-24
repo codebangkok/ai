@@ -1,11 +1,15 @@
 import * as Utils from "./utils.js"
 import * as Model from "./model.js"
-import * as Generate from "./generate.js"
 
 const loadModelButton = document.getElementById("loadModelButton");
-const releaseModelButton = document.getElementById("releaseModelButton");
 const generateImageButton = document.getElementById("generateImageButton");
 const info = document.getElementById("info");
+
+const pixelWidth = 512;
+const pixelHeight = 512;
+const latentWidth = pixelWidth / 8;
+const latentHeight = pixelHeight / 8;
+const latentChannelCount = 4;
 
 let textEncoderSession;
 let unetSession;
@@ -23,33 +27,47 @@ document.addEventListener("DOMContentLoaded", async () => {
     info.innerHTML = " - Supported";
     info.style.color = "green"
     
-    Generate.displayEmptyCanvasPlaceholder()
+    Model.displayEmptyCanvasPlaceholder()
 });
 
 loadModelButton.onclick = async () => {
-    
-    Model.releaseModels(textEncoderSession, unetSession, vaeDecoderSession)
+    const options = {
+        executionProviders: [
+            {
+                name: "webnn",
+                deviceType: "gpu"
+            },
+        ]
+    };
 
     Utils.log("Load Models started")
 
-    textEncoderSession = await Model.loadModel("text-encoder", "models/text-encoder.onnx");
-    unetSession = await Model.loadModel("unet", "models/sd-unet-v1.5-model-b2c4h64w64s77-float16-compute-and-inputs-layernorm.onnx");
-    vaeDecoderSession = await Model.loadModel("vae-decoder", "models/Stable-Diffusion-v1.5-vae-decoder-float16-fp32-instancenorm.onnx");
+    textEncoderSession = await loadModel("sd_text-encoder", "models/text-encoder.onnx", options)
+    unetSession = await loadModel("sd_unet", "models/sd-unet-v1.5-model-b2c4h64w64s77-float16-compute-and-inputs-layernorm.onnx", options)
+
+    options.freeDimensionOverrides = {
+        batch: 1,
+        channels: latentChannelCount,
+        height: latentHeight,
+        width: latentWidth,
+    }
+    vaeDecoderSession = await loadModel("sd_vae-decoder", "models/Stable-Diffusion-v1.5-vae-decoder-float16-fp32-instancenorm.onnx", options)
 
     Utils.log("Load Models completed")
 };
 
-releaseModelButton.onclick = async () => {
-    Model.releaseModels(textEncoderSession, unetSession, vaeDecoderSession)
-    textEncoderSession = null
-    unetSession = null
-    vaeDecoderSession = null
+const loadModel = async (modelName, modelPath, options) => {       
+    Utils.log(`[Loading] ${modelPath}`);
+    let modelBuffer = await Utils.getModelOPFS(modelName, modelPath);    
+    let modelSession = await ort.InferenceSession.create(modelBuffer, options);
+    Utils.log(`[Loaded] ${modelName}, size: ${modelBuffer.byteLength.toLocaleString()}`)
+    return modelSession
 }
 
 generateImageButton.onclick = async () => {
-    Generate.displayEmptyCanvasPlaceholder();
+    Model.displayEmptyCanvasPlaceholder();
 
-    let rgbPlanarPixels = await Generate.executeStableDiffusion(textEncoderSession, unetSession, vaeDecoderSession);
-    Generate.displayPlanarRGB(await rgbPlanarPixels.getData());
+    let rgbPlanarPixels = await Model.executeStableDiffusion(textEncoderSession, unetSession, vaeDecoderSession);
+    Model.displayPlanarRGB(await rgbPlanarPixels.getData());
 }
 
