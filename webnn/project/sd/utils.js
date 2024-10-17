@@ -1,5 +1,13 @@
 const status = document.getElementById("status")
 
+const pixelWidth = 512;
+const pixelHeight = 512;
+const config = {    
+    latentWidth: pixelWidth / 8,
+    latentHeight: pixelHeight / 8,
+    latentChannelCount: 4,
+}
+
 const getTokenizers = async (text) => {
     const tokenizers = await window.AutoTokenizer.from_pretrained("./tokenizer/resolve/main/");
     const { input_ids } = await tokenizers(text);
@@ -269,4 +277,5 @@ export {
     encodeFloat16,
     decodeFloat16,
     getModelOPFS,
+    config,
 }

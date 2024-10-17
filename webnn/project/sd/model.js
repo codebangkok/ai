@@ -70,12 +70,14 @@ const displayPlanarRGB = (planarPixelData) => {
 const executeStableDiffusion = async (textEncoderSession, unetSession, vaeDecoderSession) => {
     //======== Text Encode ========
     Utils.log("[Session Run] Beginning text encode");
+
     let token_ids = await getTextTokens();
 
     const textEncoderInputs = {
         input_ids: Utils.generateTensorFromValues("int32", [unetBatch, textEmbeddingSequenceLength], token_ids),
     };
     const textEncoderOutputs = await textEncoderSession.run(textEncoderInputs);
+
     Utils.log(`[Session Run] Text encode completed`);
 
     //======== UNet ========
@@ -123,6 +125,7 @@ const executeStableDiffusion = async (textEncoderSession, unetSession, vaeDecode
     const vaeDecoderInputs = {
         latent_sample: Utils.generateTensorFromBytes("float16", dimensions, halfLatents.slice(0)),
     };
+
     const decodedOutputs = await vaeDecoderSession.run(vaeDecoderInputs);
     Utils.log(`[Session Run] VAE decode completed`);
 
@@ -358,7 +361,7 @@ const convertPlanarFloat32RgbToUint8Rgba = (
 }
 
 export {
-    displayEmptyCanvasPlaceholder,
-    displayPlanarRGB,
+    displayEmptyCanvasPlaceholder,    
     executeStableDiffusion,
+    displayPlanarRGB,
 }
