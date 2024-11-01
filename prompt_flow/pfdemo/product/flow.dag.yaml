@@ -15,7 +15,7 @@ nodes:
   inputs:
     question: ${inputs.question}
     index_name: contoso-products
-    conn: AzureAISearch
+    conn: contoso-search
 - name: prompt
   type: prompt
   source:

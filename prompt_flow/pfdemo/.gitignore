@@ -1,1 +1,6 @@
+__pycache__/
+.promptflow/
 .env
+azure-cosmos.yaml
+azure-openai.yaml
+azure-search.yaml

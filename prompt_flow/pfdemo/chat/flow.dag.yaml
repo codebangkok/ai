@@ -25,5 +25,5 @@ nodes:
     max_tokens: 256
     chat_history: ${inputs.history}
     question: ${inputs.question}
-  connection: inf-ai183709168106_aoai
+  connection: aoai-connection
   api: chat

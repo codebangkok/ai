@@ -39,7 +39,7 @@ nodes:
   inputs:
     question: ${inputs.question}
     index_name: contoso-products
-    conn: AzureAISearch
+    conn: contoso-search
 - name: metaprompt
   type: prompt
   source:
@@ -58,5 +58,5 @@ nodes:
     deployment_name: gpt-4
     question: ${inputs.question}
     metaprompt: ${metaprompt.output}
-  connection: inf-ai183709168106_aoai
+  connection: aoai-connection
   api: chat
