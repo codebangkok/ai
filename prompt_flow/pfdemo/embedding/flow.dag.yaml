@@ -1,0 +1,18 @@
+inputs:
+  question:
+    type: string
+    default: What can you tell me about your jackets?
+outputs:
+  embedding:
+    type: string
+    reference: ${question_embedding.output}
+nodes:
+- name: question_embedding
+  type: python
+  source:
+    type: package
+    tool: promptflow.tools.embedding.embedding
+  inputs:
+    connection: aoai-connection
+    deployment_name: text-embedding-ada-002
+    input: ${inputs.question}

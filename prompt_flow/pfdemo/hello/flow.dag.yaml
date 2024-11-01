@@ -1,0 +1,16 @@
+inputs:
+  name:
+    type: string
+    default: Bond
+outputs:
+  hello:
+    type: string
+    reference: ${hello.output}
+nodes:
+- name: hello
+  type: python
+  source:
+    type: code
+    path: hello.py
+  inputs:
+    input1: ${inputs.name}

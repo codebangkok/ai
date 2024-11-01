@@ -1,0 +1,25 @@
+inputs:
+  question:
+    type: string
+    default: What can you tell me about your jacket?
+outputs:
+  products:
+    type: string
+    reference: ${prompt.output}
+nodes:
+- name: search_product
+  type: python
+  source:
+    type: code
+    path: search_product.py
+  inputs:
+    question: ${inputs.question}
+    index_name: contoso-products
+    conn: AzureAISearch
+- name: prompt
+  type: prompt
+  source:
+    type: code
+    path: prompt.jinja2
+  inputs:
+    products: ${search_product.output}

@@ -1,0 +1,15 @@
+
+system:
+You are a helpful assistant.
+
+{{metaprompt}}
+
+{% for item in chat_history %}
+user:
+{{item.inputs.question}}
+assistant:
+{{item.outputs.answer}}
+{% endfor %}
+
+user:
+{{question}}

@@ -1,0 +1,30 @@
+inputs:
+  question:
+    type: string
+    default: ""
+    is_chat_input: true
+    is_chat_history: false
+  history:
+    type: list
+    default: []
+    is_chat_history: true
+outputs:
+  output:
+    type: string
+    reference: ${inputs.question}
+    is_chat_output: true
+nodes:
+- name: prompt
+  type: prompt
+  source:
+    type: code
+    path: prompt.jinja2
+  inputs:
+    chat_history: ${inputs.history}
+- name: echo
+  type: python
+  source:
+    type: code
+    path: echo.py
+  inputs:
+    input1: ${prompt.output}

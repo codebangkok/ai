@@ -1,0 +1,11 @@
+$schema: https://azuremlschemas.azureedge.net/promptflow/latest/CustomConnection.schema.json
+name: "contoso-cosmos"
+type: custom
+configs:
+  endpoint: ""
+  databaseId: "contoso-outdoor"
+  containerId: "customers"
+secrets:  
+  key: ""
+
+

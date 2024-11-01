@@ -2,6 +2,11 @@
 
 **Prompt flow** is a suite of development tools designed to streamline the end-to-end development cycle of LLM-based AI applications, from ideation, prototyping, testing, evaluation to production deployment and monitoring. It makes prompt engineering much easier and enables you to build LLM apps with production quality.
 
+### Resource
+- [contoso-web](https://github.com/Azure-Samples/contoso-web)
+- [contoso-chat](https://github.com/Azure-Samples/contoso-chat)
+- [contoso-chat-proxy](https://github.com/gloveboxes/contoso-chat-proxy)
+
 ### Reference
 - [Prompt flow documentation](https://microsoft.github.io/promptflow)
 - [Jinja 神社](https://github.com/pallets/jinja)

@@ -1,0 +1,24 @@
+inputs:
+  customeid:
+    type: string
+    default: "2"
+outputs:
+  customer:
+    type: string
+    reference: ${prompt.output}
+nodes:
+- name: get_customer
+  type: python
+  source:
+    type: code
+    path: get_customer.py
+  inputs:
+    customerId: ${inputs.customeid}
+    conn: contoso-cosmos
+- name: prompt
+  type: prompt
+  source:
+    type: code
+    path: prompt.jinja2
+  inputs:
+    customer: ${get_customer.output}

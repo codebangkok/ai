@@ -1,0 +1,29 @@
+inputs:
+  question:
+    type: string
+    default: |
+      Who's prime minister of Thailand?
+    is_chat_input: true
+    is_chat_history: false
+  history:
+    type: list
+    default: []
+    is_chat_history: true
+outputs:
+  completion:
+    type: string
+    reference: ${gpt.output}
+    is_chat_output: true
+nodes:
+- name: gpt
+  type: llm
+  source:
+    type: code
+    path: gpt.jinja2
+  inputs:
+    deployment_name: gpt-4o-mini
+    max_tokens: 256
+    chat_history: ${inputs.history}
+    question: ${inputs.question}
+  connection: inf-ai183709168106_aoai
+  api: chat

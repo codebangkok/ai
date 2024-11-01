@@ -1,2 +1,7 @@
 tokenizer/
 *.onnx
+.venv/
+.DS_Store
+.vscode/
+__pycache__/
+.promptflow/

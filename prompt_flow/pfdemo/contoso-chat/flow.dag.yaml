@@ -1,0 +1,62 @@
+inputs:
+  question:
+    type: string
+    default: What can you tell me about your Jacket?
+    is_chat_input: true
+    is_chat_history: false
+  customerid:
+    type: string
+    default: "2"
+    is_chat_input: false
+    is_chat_history: false
+  history:
+    type: list
+    default: []
+    is_chat_history: true
+outputs:
+  answer:
+    type: string
+    reference: ${gpt.output}
+    is_chat_output: true
+  context:
+    type: string
+    reference: ${search_product.output}
+    is_chat_output: false
+nodes:
+- name: get_customer
+  type: python
+  source:
+    type: code
+    path: get_customer.py
+  inputs:
+    customerId: ${inputs.customerid}
+    conn: contoso-cosmos
+- name: search_product
+  type: python
+  source:
+    type: code
+    path: search_product.py
+  inputs:
+    question: ${inputs.question}
+    index_name: contoso-products
+    conn: AzureAISearch
+- name: metaprompt
+  type: prompt
+  source:
+    type: code
+    path: metaprompt.jinja2
+  inputs:
+    products: ${search_product.output}
+    customer: ${get_customer.output}
+- name: gpt
+  type: llm
+  source:
+    type: code
+    path: gpt.jinja2
+  inputs:
+    chat_history: ${inputs.history}
+    deployment_name: gpt-4
+    question: ${inputs.question}
+    metaprompt: ${metaprompt.output}
+  connection: inf-ai183709168106_aoai
+  api: chat
