@@ -5,3 +5,5 @@ tokenizer/
 .vscode/
 __pycache__/
 .promptflow/
+bin/
+obj/
