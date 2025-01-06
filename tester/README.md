@@ -15,7 +15,7 @@ ollama pull llama3.2
 ```
 docker pull ghcr.io/open-webui/open-webui:main
 ```
-9) ดาวน์โหลดไฟล์ docker-compose.yaml
+9) ดาวน์โหลดไฟล์ [docker-compose.yaml](https://github.com/codebangkok/ai/blob/main/tester/docker-compose.yaml)
 
 ### วิธีเริ่มใช้โปรแกรม
 1) เปิดโปรแกรม Terminal
