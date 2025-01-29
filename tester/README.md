@@ -4,9 +4,10 @@
 1) ดาวน์โหลด [Ollama](https://ollama.com/download/Ollama-darwin.zip)
 2) ติดตั้ง Ollama
 3) เปิดโปรแกรม Terminal
-4) ดาวน์โหลดโมเดล llama3.2
+4) ดาวน์โหลดโมเดล llama3.2, deepseek-r1
 ```
 ollama pull llama3.2
+ollama pull deepseek-r1
 ```
 5) ดาวน์โหลด [Docker Desktop](https://desktop.docker.com/mac/main/arm64/Docker.dmg)
 6) ติดตั้ง Docker Desktop
