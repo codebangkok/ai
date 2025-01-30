@@ -1,4 +1,4 @@
-## Testing with AI
+## AI-Assisted Tools
 
 ### วิธีติดตั้งโปรแกรมสำหรับ MacOS (M1,M2,M3,M4)
 1) ดาวน์โหลด [Ollama](https://ollama.com/download/Ollama-darwin.zip)
@@ -17,6 +17,7 @@ ollama pull deepseek-r1
 docker pull ghcr.io/open-webui/open-webui:main
 ```
 9) ดาวน์โหลดไฟล์ [docker-compose.yaml](https://github.com/codebangkok/ai/blob/main/tester/docker-compose.yaml)
+10) ติดตั้งโปรแกรม [Enchanted LLM](https://apps.apple.com/us/app/enchanted-llm/id6474268307)
 
 ### วิธีเริ่มใช้โปรแกรม
 1) เปิดโปรแกรม Terminal
