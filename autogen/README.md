@@ -46,8 +46,8 @@ OpenAIChatCompletionClient(
     model="deepseek-r1", 
     model_info=ModelInfo(
         vision=False, 
-        function_calling=True, 
-        json_output=True, 
+        function_calling=False, 
+        json_output=False, 
     ),         
 )
 ```
