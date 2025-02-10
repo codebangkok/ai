@@ -11,4 +11,10 @@ ollama pull llama3.2
 ollama pull llama3.2-vision
 ollama pull qwen2
 ollama pull deepseek-r1
+ollama pull codegemma
+```
+
+### Docker
+```
+docker pull python:3-slim
 ```
