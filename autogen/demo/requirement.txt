@@ -1,0 +1,4 @@
+autogen-agentchat
+autogen-ext[openai,redis,docker]
+docker
+autogenstudio

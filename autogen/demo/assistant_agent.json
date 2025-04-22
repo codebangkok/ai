@@ -1,0 +1,28 @@
+{
+    "type": "AssistantAgentState",
+    "version": "1.0.0",
+    "llm_context": {
+        "messages": [
+            {
+                "content": "Write a tagline for Coffee Shop",
+                "source": "user",
+                "type": "UserMessage"
+            },
+            {
+                "content": "\"Savor the Moment, coffee as it should be.\"",
+                "source": "assistant",
+                "type": "AssistantMessage"
+            },
+            {
+                "content": "Game Shop",
+                "source": "user",
+                "type": "UserMessage"
+            },
+            {
+                "content": "\"Unleash Your Adventure, Explore The Best Games Here.\"",
+                "source": "assistant",
+                "type": "AssistantMessage"
+            }
+        ]
+    }
+}

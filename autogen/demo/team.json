@@ -1,0 +1,226 @@
+{
+    "provider": "autogen_agentchat.teams.RoundRobinGroupChat",
+    "component_type": "team",
+    "version": 1,
+    "component_version": 1,
+    "description": "A team that runs a group chat with participants taking turns in a round-robin fashion\n    to publish a message to all.",
+    "label": "Bond Team",
+    "config": {
+        "participants": [
+            {
+                "provider": "autogen_agentchat.agents.SocietyOfMindAgent",
+                "component_type": "agent",
+                "version": 1,
+                "component_version": 1,
+                "description": "An agent that uses an inner team of agents to generate responses.",
+                "label": "SocietyOfMindAgent",
+                "config": {
+                    "name": "society_of_mind",
+                    "team": {
+                        "provider": "autogen_agentchat.teams.RoundRobinGroupChat",
+                        "component_type": "team",
+                        "version": 1,
+                        "component_version": 1,
+                        "description": "A team that runs a group chat with participants taking turns in a round-robin fashion\n    to publish a message to all.",
+                        "label": "RoundRobinGroupChat",
+                        "config": {
+                            "participants": [
+                                {
+                                    "provider": "autogen_agentchat.agents.AssistantAgent",
+                                    "component_type": "agent",
+                                    "version": 1,
+                                    "component_version": 1,
+                                    "description": "An agent that provides assistance with tool use.",
+                                    "label": "AssistantAgent",
+                                    "config": {
+                                        "name": "writer",
+                                        "model_client": {
+                                            "provider": "autogen_ext.models.openai.OpenAIChatCompletionClient",
+                                            "component_type": "model",
+                                            "version": 1,
+                                            "component_version": 1,
+                                            "description": "Chat completion client for OpenAI hosted models.",
+                                            "label": "OpenAIChatCompletionClient",
+                                            "config": {
+                                                "model": "qwen2",
+                                                "model_info": {
+                                                    "vision": false,
+                                                    "function_calling": true,
+                                                    "json_output": false,
+                                                    "family": "unknown"
+                                                },
+                                                "base_url": "http://localhost:11434/v1"
+                                            }
+                                        },
+                                        "tools": [],
+                                        "handoffs": [],
+                                        "model_context": {
+                                            "provider": "autogen_core.model_context.UnboundedChatCompletionContext",
+                                            "component_type": "chat_completion_context",
+                                            "version": 1,
+                                            "component_version": 1,
+                                            "description": "An unbounded chat completion context that keeps a view of the all the messages.",
+                                            "label": "UnboundedChatCompletionContext",
+                                            "config": {}
+                                        },
+                                        "description": "An agent that provides assistance with ability to use tools.",
+                                        "system_message": "You're a writer, write well",
+                                        "model_client_stream": false,
+                                        "reflect_on_tool_use": false,
+                                        "tool_call_summary_format": "{result}"
+                                    }
+                                },
+                                {
+                                    "provider": "autogen_agentchat.agents.AssistantAgent",
+                                    "component_type": "agent",
+                                    "version": 1,
+                                    "component_version": 1,
+                                    "description": "An agent that provides assistance with tool use.",
+                                    "label": "AssistantAgent",
+                                    "config": {
+                                        "name": "editor",
+                                        "model_client": {
+                                            "provider": "autogen_ext.models.openai.OpenAIChatCompletionClient",
+                                            "component_type": "model",
+                                            "version": 1,
+                                            "component_version": 1,
+                                            "description": "Chat completion client for OpenAI hosted models.",
+                                            "label": "OpenAIChatCompletionClient",
+                                            "config": {
+                                                "model": "qwen2",
+                                                "model_info": {
+                                                    "vision": false,
+                                                    "function_calling": true,
+                                                    "json_output": false,
+                                                    "family": "unknown"
+                                                },
+                                                "base_url": "http://localhost:11434/v1"
+                                            }
+                                        },
+                                        "tools": [],
+                                        "handoffs": [],
+                                        "model_context": {
+                                            "provider": "autogen_core.model_context.UnboundedChatCompletionContext",
+                                            "component_type": "chat_completion_context",
+                                            "version": 1,
+                                            "component_version": 1,
+                                            "description": "An unbounded chat completion context that keeps a view of the all the messages.",
+                                            "label": "UnboundedChatCompletionContext",
+                                            "config": {}
+                                        },
+                                        "description": "An agent that provides assistance with ability to use tools.",
+                                        "system_message": "\nYou're an editor, provide critical feedback.\nResponse with 'APPROVE' if the text addresses all feedback.\n",
+                                        "model_client_stream": false,
+                                        "reflect_on_tool_use": false,
+                                        "tool_call_summary_format": "{result}"
+                                    }
+                                }
+                            ],
+                            "termination_condition": {
+                                "provider": "autogen_agentchat.base.OrTerminationCondition",
+                                "component_type": "termination",
+                                "version": 1,
+                                "component_version": 1,
+                                "label": "OrTerminationCondition",
+                                "config": {
+                                    "conditions": [
+                                        {
+                                            "provider": "autogen_agentchat.conditions.TextMentionTermination",
+                                            "component_type": "termination",
+                                            "version": 1,
+                                            "component_version": 1,
+                                            "description": "Terminate the conversation if a specific text is mentioned.",
+                                            "label": "TextMentionTermination",
+                                            "config": {
+                                                "text": "APPROVE"
+                                            }
+                                        },
+                                        {
+                                            "provider": "autogen_agentchat.conditions.MaxMessageTermination",
+                                            "component_type": "termination",
+                                            "version": 1,
+                                            "component_version": 1,
+                                            "description": "Terminate the conversation after a maximum number of messages have been exchanged.",
+                                            "label": "MaxMessageTermination",
+                                            "config": {
+                                                "max_messages": 10,
+                                                "include_agent_event": false
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "model_client": {
+                        "provider": "autogen_ext.models.openai.OpenAIChatCompletionClient",
+                        "component_type": "model",
+                        "version": 1,
+                        "component_version": 1,
+                        "description": "Chat completion client for OpenAI hosted models.",
+                        "label": "OpenAIChatCompletionClient",
+                        "config": {
+                            "model": "qwen2",
+                            "model_info": {
+                                "vision": false,
+                                "function_calling": true,
+                                "json_output": false,
+                                "family": "unknown"
+                            },
+                            "base_url": "http://localhost:11434/v1"
+                        }
+                    },
+                    "description": "An agent that uses an inner team of agents to generate responses.",
+                    "instruction": "Earlier you were asked to fulfill a request. You and your team worked diligently to address that request. Here is a transcript of that conversation:",
+                    "response_prompt": "Output a standalone response to the original request, without mentioning any of the intermediate discussion."
+                }
+            },
+            {
+                "provider": "autogen_agentchat.agents.AssistantAgent",
+                "component_type": "agent",
+                "version": 1,
+                "component_version": 1,
+                "description": "An agent that provides assistance with tool use.",
+                "label": "AssistantAgent",
+                "config": {
+                    "name": "translator",
+                    "model_client": {
+                        "provider": "autogen_ext.models.openai.OpenAIChatCompletionClient",
+                        "component_type": "model",
+                        "version": 1,
+                        "component_version": 1,
+                        "description": "Chat completion client for OpenAI hosted models.",
+                        "label": "OpenAIChatCompletionClient",
+                        "config": {
+                            "model": "qwen2",
+                            "model_info": {
+                                "vision": false,
+                                "function_calling": true,
+                                "json_output": false,
+                                "family": "unknown"
+                            },
+                            "base_url": "http://localhost:11434/v1"
+                        }
+                    },
+                    "tools": [],
+                    "handoffs": [],
+                    "model_context": {
+                        "provider": "autogen_core.model_context.UnboundedChatCompletionContext",
+                        "component_type": "chat_completion_context",
+                        "version": 1,
+                        "component_version": 1,
+                        "description": "An unbounded chat completion context that keeps a view of the all the messages.",
+                        "label": "UnboundedChatCompletionContext",
+                        "config": {}
+                    },
+                    "description": "An agent that provides assistance with ability to use tools.",
+                    "system_message": "Translate the text to Thai.",
+                    "model_client_stream": false,
+                    "reflect_on_tool_use": false,
+                    "tool_call_summary_format": "{result}"
+                }
+            }
+        ],
+        "max_turns": 2
+    }
+}
