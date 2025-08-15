@@ -1,0 +1,17 @@
+[project]
+name = "vectordb"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "autogen-agentchat>=0.7.2",
+    "autogen-ext[ollama]>=0.7.2",
+    "chromadb>=1.0.17",
+    "numpy>=2.3.2",
+    "openai>=1.99.9",
+    "python-dotenv>=1.1.1",
+    "qdrant-client[fastembed]>=1.15.1",
+    "sentence-transformers>=5.1.0",
+    "sqlite-vec>=0.1.6",
+]

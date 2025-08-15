@@ -1,0 +1,14 @@
+services:
+  chromadb:
+    image: chromadb/chroma
+    ports:
+      - 8000:8000
+    volumes:
+      - ./chroma:/data
+
+  qdrant:
+    image: qdrant/qdrant
+    ports:
+      - 6333:6333
+    volumes:
+      - ./qdrant:/qdrant/storage
