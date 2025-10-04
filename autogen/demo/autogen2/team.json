@@ -1,0 +1,186 @@
+{
+    "provider": "autogen_agentchat.teams.RoundRobinGroupChat",
+    "component_type": "team",
+    "version": 1,
+    "component_version": 1,
+    "description": "A team that runs a group chat with participants taking turns in a round-robin fashion\nto publish a message to all.",
+    "label": "RoundRobinGroupChat",
+    "config": {
+        "name": "TaglineWriterTeam",
+        "description": "A team of writer agents.",
+        "participants": [
+            {
+                "provider": "autogen_agentchat.agents.AssistantAgent",
+                "component_type": "agent",
+                "version": 2,
+                "component_version": 2,
+                "description": "An agent that provides assistance with tool use.\nThe :meth:`on_messages` returns a :class:`~autogen_agentchat.base.Response`\nin which :attr:`~autogen_agentchat.base.Response.chat_message` is the final\nresponse message.",
+                "label": "AssistantAgent",
+                "config": {
+                    "name": "writer",
+                    "model_client": {
+                        "provider": "autogen_ext.models.ollama.OllamaChatCompletionClient",
+                        "component_type": "model",
+                        "version": 1,
+                        "component_version": 1,
+                        "description": "Chat completion client for Ollama hosted models.",
+                        "label": "OllamaChatCompletionClient",
+                        "config": {
+                            "model": "llama3.1",
+                            "follow_redirects": true
+                        }
+                    },
+                    "workbench": [
+                        {
+                            "provider": "autogen_core.tools.StaticStreamWorkbench",
+                            "component_type": "workbench",
+                            "version": 1,
+                            "component_version": 1,
+                            "description": "A workbench that provides a static set of tools that do not change after\neach tool execution, and supports streaming results.",
+                            "label": "StaticStreamWorkbench",
+                            "config": {
+                                "tools": [],
+                                "tool_overrides": {}
+                            }
+                        }
+                    ],
+                    "model_context": {
+                        "provider": "autogen_core.model_context.UnboundedChatCompletionContext",
+                        "component_type": "chat_completion_context",
+                        "version": 1,
+                        "component_version": 1,
+                        "description": "An unbounded chat completion context that keeps a view of the all the messages.",
+                        "label": "UnboundedChatCompletionContext",
+                        "config": {}
+                    },
+                    "description": "An agent that provides assistance with ability to use tools.",
+                    "system_message": "You're a writer. who write a tagline about image",
+                    "model_client_stream": true,
+                    "reflect_on_tool_use": false,
+                    "tool_call_summary_format": "{result}",
+                    "max_tool_iterations": 1,
+                    "metadata": {}
+                }
+            },
+            {
+                "provider": "autogen_agentchat.agents.AssistantAgent",
+                "component_type": "agent",
+                "version": 2,
+                "component_version": 2,
+                "description": "An agent that provides assistance with tool use.\nThe :meth:`on_messages` returns a :class:`~autogen_agentchat.base.Response`\nin which :attr:`~autogen_agentchat.base.Response.chat_message` is the final\nresponse message.",
+                "label": "AssistantAgent",
+                "config": {
+                    "name": "editor",
+                    "model_client": {
+                        "provider": "autogen_ext.models.ollama.OllamaChatCompletionClient",
+                        "component_type": "model",
+                        "version": 1,
+                        "component_version": 1,
+                        "description": "Chat completion client for Ollama hosted models.",
+                        "label": "OllamaChatCompletionClient",
+                        "config": {
+                            "model": "llama3.1",
+                            "follow_redirects": true
+                        }
+                    },
+                    "workbench": [
+                        {
+                            "provider": "autogen_core.tools.StaticStreamWorkbench",
+                            "component_type": "workbench",
+                            "version": 1,
+                            "component_version": 1,
+                            "description": "A workbench that provides a static set of tools that do not change after\neach tool execution, and supports streaming results.",
+                            "label": "StaticStreamWorkbench",
+                            "config": {
+                                "tools": [],
+                                "tool_overrides": {}
+                            }
+                        }
+                    ],
+                    "model_context": {
+                        "provider": "autogen_core.model_context.UnboundedChatCompletionContext",
+                        "component_type": "chat_completion_context",
+                        "version": 1,
+                        "component_version": 1,
+                        "description": "An unbounded chat completion context that keeps a view of the all the messages.",
+                        "label": "UnboundedChatCompletionContext",
+                        "config": {}
+                    },
+                    "description": "An agent that provides assistance with ability to use tools.",
+                    "system_message": "You're an editor. who feedback tagline from writer about wording must be polite, not funny. Respond with 'APPROVE' if correct",
+                    "model_client_stream": true,
+                    "reflect_on_tool_use": false,
+                    "tool_call_summary_format": "{result}",
+                    "max_tool_iterations": 1,
+                    "metadata": {}
+                }
+            },
+            {
+                "provider": "autogen_agentchat.agents.AssistantAgent",
+                "component_type": "agent",
+                "version": 2,
+                "component_version": 2,
+                "description": "An agent that provides assistance with tool use.\nThe :meth:`on_messages` returns a :class:`~autogen_agentchat.base.Response`\nin which :attr:`~autogen_agentchat.base.Response.chat_message` is the final\nresponse message.",
+                "label": "AssistantAgent",
+                "config": {
+                    "name": "translator",
+                    "model_client": {
+                        "provider": "autogen_ext.models.ollama.OllamaChatCompletionClient",
+                        "component_type": "model",
+                        "version": 1,
+                        "component_version": 1,
+                        "description": "Chat completion client for Ollama hosted models.",
+                        "label": "OllamaChatCompletionClient",
+                        "config": {
+                            "model": "qwen2",
+                            "follow_redirects": true
+                        }
+                    },
+                    "workbench": [
+                        {
+                            "provider": "autogen_core.tools.StaticStreamWorkbench",
+                            "component_type": "workbench",
+                            "version": 1,
+                            "component_version": 1,
+                            "description": "A workbench that provides a static set of tools that do not change after\neach tool execution, and supports streaming results.",
+                            "label": "StaticStreamWorkbench",
+                            "config": {
+                                "tools": [],
+                                "tool_overrides": {}
+                            }
+                        }
+                    ],
+                    "model_context": {
+                        "provider": "autogen_core.model_context.UnboundedChatCompletionContext",
+                        "component_type": "chat_completion_context",
+                        "version": 1,
+                        "component_version": 1,
+                        "description": "An unbounded chat completion context that keeps a view of the all the messages.",
+                        "label": "UnboundedChatCompletionContext",
+                        "config": {}
+                    },
+                    "description": "An agent that provides assistance with ability to use tools.",
+                    "system_message": "\u0e4dYou're a translator. who translate to Thai language",
+                    "model_client_stream": true,
+                    "reflect_on_tool_use": false,
+                    "tool_call_summary_format": "{result}",
+                    "max_tool_iterations": 1,
+                    "metadata": {}
+                }
+            }
+        ],
+        "termination_condition": {
+            "provider": "autogen_agentchat.conditions.MaxMessageTermination",
+            "component_type": "termination",
+            "version": 1,
+            "component_version": 1,
+            "description": "Terminate the conversation after a maximum number of messages have been exchanged.",
+            "label": "MaxMessageTermination",
+            "config": {
+                "max_messages": 4,
+                "include_agent_event": false
+            }
+        },
+        "emit_team_events": false
+    }
+}

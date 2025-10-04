@@ -1,0 +1,7 @@
+{
+    "type": "AssistantAgentState",
+    "version": "1.0.0",
+    "llm_context": {
+        "messages": []
+    }
+}
