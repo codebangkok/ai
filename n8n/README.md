@@ -7,16 +7,24 @@
 ### n8n - Triggers
 - [On form submission](https://dev.to/codebangkok/n8n-on-form-submission-5aha)
 
-### n8n Credential
-- [Google Gemini API](https://dev.to/codebangkok/n8n-how-to-create-credential-google-gemini-api-12p8)
-- [Microsoft Outlook OAuth2 API](https://dev.to/codebangkok/n8n-how-to-create-credential-microsoft-outlook-oauth2-api-46hn)
-- [Microsoft Teams OAuth2 API](https://dev.to/codebangkok/n8n-credential-microsoft-team-oauth2-api-2nd8)
-- [Microsoft Excel OAuth2 API](https://dev.to/codebangkok/n8n-credential-microsoft-excel-oauth2-api-3hfd)
-- [Microsoft Drive OAuth2 API](https://dev.to/codebangkok/n8n-credential-microsoft-drive-oauth2-api-1h1e)
-- [Jira SW Cloud API](https://dev.to/codebangkok/n8n-credential-jira-sw-cloud-api-n7f)
-- [Gmail Account](https://dev.to/codebangkok/n8n-how-to-create-credential-gmail-account-166e)
+### n8n - Credential
+- [Jira SW Cloud account](https://dev.to/codebangkok/n8n-credential-jira-sw-cloud-api-n7f)
+- [Google Gemini API account](https://dev.to/codebangkok/n8n-how-to-create-credential-google-gemini-api-12p8)
+- [Google Gmail account](https://dev.to/codebangkok/n8n-how-to-create-credential-gmail-account-166e)
+- [Google Sheets account](https://dev.to/codebangkok/n8n-credential-google-sheets-oauth2-api-hh)
+- [Google Docs account](https://dev.to/codebangkok/n8n-credential-google-docs-account-4b67)
+- [Google Slides account](https://dev.to/codebangkok/n8n-credential-google-slides-account-4707)
+- [Google Calendar account](https://dev.to/codebangkok/n8n-credential-google-calendar-account-2b69)
+- [Google Contacts account](https://dev.to/codebangkok/n8n-credential-google-contacts-account-2ldg)
+- [Google Tasks account](https://dev.to/codebangkok/n8n-credential-google-tasks-account-4845)
+- [Google Drive account](https://dev.to/codebangkok/n8n-credential-google-drive-account-561g)
+- [Microsoft Outlook account](https://dev.to/codebangkok/n8n-how-to-create-credential-microsoft-outlook-oauth2-api-46hn)
+- [Microsoft Teams account](https://dev.to/codebangkok/n8n-credential-microsoft-team-oauth2-api-2nd8)
+- [Microsoft Excel account](https://dev.to/codebangkok/n8n-credential-microsoft-excel-oauth2-api-3hfd)
+- [Microsoft Drive account](https://dev.to/codebangkok/n8n-credential-microsoft-drive-oauth2-api-1h1e)
 
-### n8n Setting
+
+### n8n - Setting
 - [Invite user](https://dev.to/codebangkok/n8n-how-to-invite-user-3l0g)
 - [Delete Workflow](https://dev.to/codebangkok/n8n-how-to-delete-workflow-2ni3)
 
