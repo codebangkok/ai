@@ -1,8 +1,10 @@
 # n8n Flexible AI workflow automation
 
-### n8n - Workflow
-- [Microsoft Outlook - Send Email](https://dev.to/codebangkok/n8n-send-microsoft-outlook-email-5fo9)
-- [Microsoft Teams - Create Channel Message](https://dev.to/codebangkok/n8n-microsoft-teams-create-channel-message-57c5)
+### n8n - Action
+- [Google Gmail - Send a message](https://dev.to/codebangkok/n8n-gmail-send-a-message-ng1)
+- [Microsoft Outlook - Send a message](https://dev.to/codebangkok/n8n-send-microsoft-outlook-email-5fo9)
+- [Microsoft Teams - Channel - Create message](https://dev.to/codebangkok/n8n-microsoft-teams-create-channel-message-57c5)
+- [Microsoft Excel - Append data to sheet](https://dev.to/codebangkok/n8n-microsoft-excel-365-append-data-to-sheet-2dp4)
 
 ### n8n - Triggers
 - [On form submission](https://dev.to/codebangkok/n8n-on-form-submission-5aha)
