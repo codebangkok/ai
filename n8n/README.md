@@ -12,6 +12,7 @@
 
 ### n8n - Credential
 - [Jira SW Cloud account](https://dev.to/codebangkok/n8n-credential-jira-sw-cloud-api-n7f)
+- [OpenAI account](https://dev.to/codebangkok/n8n-credential-openai-account-3b1h)
 - [Google Gemini API account](https://dev.to/codebangkok/n8n-how-to-create-credential-google-gemini-api-12p8)
 - [Google Gmail account](https://dev.to/codebangkok/n8n-how-to-create-credential-gmail-account-166e)
 - [Google Sheets account](https://dev.to/codebangkok/n8n-credential-google-sheets-oauth2-api-hh)
@@ -33,6 +34,7 @@
 
 
 ### Create API Key
+- [OpenAI API key](https://dev.to/codebangkok/create-openai-api-key-4ln9)
 - [Gemini API key](https://dev.to/codebangkok/how-to-create-gemini-api-key-486b)
 - [Jira API Token](https://dev.to/codebangkok/create-jira-api-token-2oad)
 - [Qdrant API Key](https://dev.to/codebangkok/qdrant-create-free-cluster-ii6)
