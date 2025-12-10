@@ -26,6 +26,7 @@
 - [Microsoft Teams account](https://dev.to/codebangkok/n8n-credential-microsoft-team-oauth2-api-2nd8)
 - [Microsoft Excel account](https://dev.to/codebangkok/n8n-credential-microsoft-excel-oauth2-api-3hfd)
 - [Microsoft Drive account](https://dev.to/codebangkok/n8n-credential-microsoft-drive-oauth2-api-1h1e)
+- [SerpAPI account (Google Search API)](https://dev.to/codebangkok/n8n-credential-serpapi-account-google-search-api-23jb)
 
 
 ### n8n - Setting
@@ -37,6 +38,7 @@
 - [OpenAI API key](https://dev.to/codebangkok/create-openai-api-key-4ln9)
 - [Gemini API key](https://dev.to/codebangkok/how-to-create-gemini-api-key-486b)
 - [Jira API Token](https://dev.to/codebangkok/create-jira-api-token-2oad)
+- [SerpApi Key (Google Search API)](https://dev.to/codebangkok/create-serpapi-google-search-api-key-1nn3)
 - [Qdrant API Key](https://dev.to/codebangkok/qdrant-create-free-cluster-ii6)
 
 
