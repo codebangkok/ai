@@ -43,6 +43,7 @@
 
 
 ### Setup for System Admin
+- [Join the Microsoft 365 Developer Program](https://dev.to/codebangkok/join-the-microsoft-365-developer-program-2l42)
 - [Microsoft 365 OAuth2 API](https://dev.to/codebangkok/how-to-create-microsoft-oauth2-api-38g1)
 - [Microsoft 365 Shared Mailbox](https://dev.to/codebangkok/microsoft-365-shared-mailbox-28l2)
 - [Google OAuth2 API](https://dev.to/codebangkok/how-to-create-google-oauth2-api-o29)
