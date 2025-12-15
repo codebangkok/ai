@@ -27,6 +27,7 @@
 - [Microsoft Excel account](https://dev.to/codebangkok/n8n-credential-microsoft-excel-oauth2-api-3hfd)
 - [Microsoft Drive account](https://dev.to/codebangkok/n8n-credential-microsoft-drive-oauth2-api-1h1e)
 - [SerpAPI account (Google Search API)](https://dev.to/codebangkok/n8n-credential-serpapi-account-google-search-api-23jb)
+- [Figma account](https://dev.to/codebangkok/n8n-credential-figma-account-3lfg)
 
 
 ### n8n - Setting
@@ -40,6 +41,7 @@
 - [Jira API Token](https://dev.to/codebangkok/create-jira-api-token-2oad)
 - [SerpApi Key (Google Search API)](https://dev.to/codebangkok/create-serpapi-google-search-api-key-1nn3)
 - [Qdrant API Key](https://dev.to/codebangkok/qdrant-create-free-cluster-ii6)
+- [Fixma Access Token](https://dev.to/codebangkok/create-fixma-api-key-e80)
 
 
 ### Setup for System Admin
