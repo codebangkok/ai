@@ -32,6 +32,7 @@
 
 
 ### n8n - Setting
+- [n8n.io Sign Up](https://dev.to/codebangkok/n8n-sign-up-5af)
 - [Invite user](https://dev.to/codebangkok/n8n-how-to-invite-user-3l0g)
 - [Delete Workflow](https://dev.to/codebangkok/n8n-how-to-delete-workflow-2ni3)
 
