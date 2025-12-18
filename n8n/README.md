@@ -43,11 +43,11 @@
 - [Jira API Token](https://dev.to/codebangkok/create-jira-api-token-2oad)
 - [SerpApi Key (Google Search API)](https://dev.to/codebangkok/create-serpapi-google-search-api-key-1nn3)
 - [Qdrant API Key](https://dev.to/codebangkok/qdrant-create-free-cluster-ii6)
-- [Fixma Access Token](https://dev.to/codebangkok/create-fixma-api-key-e80)
+- [Figma Access Token](https://dev.to/codebangkok/create-fixma-api-key-e80)
 - [GitLab Access Token](https://dev.to/codebangkok/create-gitlab-access-token-47n9)
 
 
 ### Setup for System Admin
-- [Microsoft 365 OAuth2 API](https://dev.to/codebangkok/how-to-create-microsoft-oauth2-api-38g1)
-- [Microsoft 365 Shared Mailbox](https://dev.to/codebangkok/microsoft-365-shared-mailbox-28l2)
 - [Google OAuth2 API](https://dev.to/codebangkok/how-to-create-google-oauth2-api-o29)
+- [Microsoft 365 OAuth2 API](https://dev.to/codebangkok/how-to-create-microsoft-oauth2-api-38g1)
+
