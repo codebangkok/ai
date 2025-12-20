@@ -1,5 +1,7 @@
 # n8n Flexible AI workflow automation
 
+## Resources
+
 ### n8n - Action
 - [Google Gmail - Send a message](https://dev.to/codebangkok/n8n-gmail-send-a-message-ng1)
 - [Google Sheets - Append row in sheet](https://dev.to/codebangkok/n8n-google-sheets-append-row-in-sheet-ode)
@@ -30,12 +32,10 @@
 - [Figma account](https://dev.to/codebangkok/n8n-credential-figma-account-3lfg)
 - [GitLab account](https://dev.to/codebangkok/n8n-credential-gitlab-account-53i7)
 
-
 ### n8n - Setting
 - [n8n.io Sign Up](https://dev.to/codebangkok/n8n-sign-up-5af)
 - [Invite user](https://dev.to/codebangkok/n8n-how-to-invite-user-3l0g)
 - [Delete Workflow](https://dev.to/codebangkok/n8n-how-to-delete-workflow-2ni3)
-
 
 ### Create API Key
 - [OpenAI API key](https://dev.to/codebangkok/create-openai-api-key-4ln9)
@@ -46,8 +46,10 @@
 - [Figma Access Token](https://dev.to/codebangkok/create-fixma-api-key-e80)
 - [GitLab Access Token](https://dev.to/codebangkok/create-gitlab-access-token-47n9)
 
-
 ### Setup for System Admin
 - [Google OAuth2 API](https://dev.to/codebangkok/how-to-create-google-oauth2-api-o29)
 - [Microsoft 365 OAuth2 API](https://dev.to/codebangkok/how-to-create-microsoft-oauth2-api-38g1)
 
+### n8n Cheat Sheet
+- [Cheat Sheet Dashboard](https://openerpsolutions.co.uk/n8n_cheetsheet.html)
+![n8n Cheat Sheet](https://preview.redd.it/i-made-an-n8n-cheat-sheet-v0-w4ult2xaxjue1.png?width=1080&crop=smart&auto=webp&s=dd1b32c81e42c66ed87e4516e9f2a791ba080068)
