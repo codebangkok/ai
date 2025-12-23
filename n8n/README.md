@@ -1,6 +1,7 @@
 # n8n Flexible AI workflow automation
 
 ## Resources
+[CodeBangkok n8n invitation](https://krungthaigroup-my.sharepoint.com/:x:/g/personal/surasuk_o_infinitaskt_com/IQAoHXufL225QajIeZIM2XMJARpONUlzaLsFlsCgoNINF6g?e=VCJ0xV)
 
 ### n8n - Action
 - [Google Gmail - Send a message](https://dev.to/codebangkok/n8n-gmail-send-a-message-ng1)
@@ -151,3 +152,4 @@ Neutral
 ```
 You are a helpful email assistant, which helps craft effective and succinct email based on user's instruction. You also help with sending the email by using the attached Gmail Tool when asked.
 ```
+
