@@ -56,6 +56,10 @@
 
 ![n8n Cheat Sheet](n8nCheatSheet.png)
 
+### Resource
+
+- [แชร์เทคนิคการติดตั้ง Self-Host และการใช้ MCP บน n8n](https://www.youtube.com/watch?v=po9hapYr8-0)
+
 ### Prompt Engineering
 
 
