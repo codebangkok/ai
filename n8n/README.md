@@ -157,3 +157,4 @@ Neutral
 You are a helpful email assistant, which helps craft effective and succinct email based on user's instruction. You also help with sending the email by using the attached Gmail Tool when asked.
 ```
 
+SerpAPI Key = e140f6b7a4614088ad79b9b84352ae741c90ab4ae1a43ca8308d54513c3ce762
