@@ -2,6 +2,8 @@
 
 ## Resources
 
+[CodeBangkok n8n - Alpha Makeathon Invite Link](https://krungthaigroup-my.sharepoint.com/:x:/g/personal/surasuk_o_infinitaskt_com/IQCK6gbqXS4YRKmb4wUTNmD-AZr0Y4CiNgbRKSvU9VBP9k0?e=TqBrp7)
+
 ### n8n - Action
 - [Google Gmail - Send a message](https://dev.to/codebangkok/n8n-gmail-send-a-message-ng1)
 - [Google Sheets - Append row in sheet](https://dev.to/codebangkok/n8n-google-sheets-append-row-in-sheet-ode)
@@ -38,6 +40,8 @@
 - [Delete Workflow](https://dev.to/codebangkok/n8n-how-to-delete-workflow-2ni3)
 
 ### Create API Key
+- [Google OAuth2 API](https://dev.to/codebangkok/how-to-create-google-oauth2-api-o29)
+- [Microsoft 365 OAuth2 API](https://dev.to/codebangkok/how-to-create-microsoft-oauth2-api-38g1)
 - [OpenAI API key](https://dev.to/codebangkok/create-openai-api-key-4ln9)
 - [Gemini API key](https://dev.to/codebangkok/how-to-create-gemini-api-key-486b)
 - [Jira API Token](https://dev.to/codebangkok/create-jira-api-token-2oad)
@@ -45,10 +49,7 @@
 - [Qdrant API Key](https://dev.to/codebangkok/qdrant-create-free-cluster-ii6)
 - [Figma Access Token](https://dev.to/codebangkok/create-fixma-api-key-e80)
 - [GitLab Access Token](https://dev.to/codebangkok/create-gitlab-access-token-47n9)
-
-### Setup for System Admin
-- [Google OAuth2 API](https://dev.to/codebangkok/how-to-create-google-oauth2-api-o29)
-- [Microsoft 365 OAuth2 API](https://dev.to/codebangkok/how-to-create-microsoft-oauth2-api-38g1)
+- [Pinecone API Key and Index](https://dev.to/codebangkok/create-pinecone-api-key-and-index-467n)
 
 ### n8n Cheat Sheet
 - [Cheat Sheet Dashboard](https://openerpsolutions.co.uk/n8n_cheetsheet.html)
