@@ -147,6 +147,6 @@ Neutral
 You are a helpful email assistant, which helps craft effective and succinct email based on user's instruction. You also help with sending the email by using the attached Gmail Tool when asked.
 ```
 
-SerpAPI Key = 
+SerpAPI Key = 934e013d39313e5aeda7b3df70dd7a45ccd26d599f45fd3ee207fb523a738cc1
 Weather API Key = 
 Weather API Url = https://api.weatherapi.com/v1/current.json
