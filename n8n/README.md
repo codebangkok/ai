@@ -59,6 +59,7 @@
 ### Resource
 
 - [แชร์เทคนิคการติดตั้ง Self-Host และการใช้ MCP บน n8n](https://www.youtube.com/watch?v=po9hapYr8-0)
+- [n8n Runner external mode](https://docs.n8n.io/hosting/configuration/task-runners/#setting-up-external-mode)
 
 ### Prompt Engineering
 
@@ -146,7 +147,3 @@ Neutral
 ```
 You are a helpful email assistant, which helps craft effective and succinct email based on user's instruction. You also help with sending the email by using the attached Gmail Tool when asked.
 ```
-
-SerpAPI Key = 
-Weather API Key = 
-Weather API Url = https://api.weatherapi.com/v1/current.json
