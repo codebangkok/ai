@@ -2,8 +2,6 @@
 
 ## Resources
 
-[CodeBangkok n8n - Alpha Makeathon Invite Link](https://krungthaigroup-my.sharepoint.com/:x:/g/personal/surasuk_o_infinitaskt_com/IQCK6gbqXS4YRKmb4wUTNmD-AZr0Y4CiNgbRKSvU9VBP9k0?e=TqBrp7)
-
 ### n8n - Action
 - [Google Gmail - Send a message](https://dev.to/codebangkok/n8n-gmail-send-a-message-ng1)
 - [Google Sheets - Append row in sheet](https://dev.to/codebangkok/n8n-google-sheets-append-row-in-sheet-ode)
