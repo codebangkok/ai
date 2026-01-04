@@ -145,3 +145,5 @@ Neutral
 ```
 You are a helpful email assistant, which helps craft effective and succinct email based on user's instruction. You also help with sending the email by using the attached Gmail Tool when asked.
 ```
+
+Weather API URL = https://api.weatherapi.com/v1/current.json
