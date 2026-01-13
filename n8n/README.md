@@ -8,11 +8,13 @@
 - [Microsoft Outlook - Send a message](https://dev.to/codebangkok/n8n-send-microsoft-outlook-email-5fo9)
 - [Microsoft Teams - Channel - Create message](https://dev.to/codebangkok/n8n-microsoft-teams-create-channel-message-57c5)
 - [Microsoft Excel - Append data to sheet](https://dev.to/codebangkok/n8n-microsoft-excel-365-append-data-to-sheet-2dp4)
+- [Confluence - AI Agent Chat with Page Content Grounding](https://dev.to/codebangkok/n8n-confluence-ai-agent-chat-with-page-content-grounding-40h9)
 
 ### n8n - Triggers
 - [On form submission](https://dev.to/codebangkok/n8n-on-form-submission-5aha)
 
 ### n8n - Credential
+- [Atlassian Credentials account](https://dev.to/codebangkok/n8n-credential-atlassian-credentials-account-346l)
 - [Jira SW Cloud account](https://dev.to/codebangkok/n8n-credential-jira-sw-cloud-api-n7f)
 - [OpenAI account](https://dev.to/codebangkok/n8n-credential-openai-account-3b1h)
 - [Google Gemini API account](https://dev.to/codebangkok/n8n-how-to-create-credential-google-gemini-api-12p8)
@@ -42,12 +44,15 @@
 - [Microsoft 365 OAuth2 API](https://dev.to/codebangkok/how-to-create-microsoft-oauth2-api-38g1)
 - [OpenAI API key](https://dev.to/codebangkok/create-openai-api-key-4ln9)
 - [Gemini API key](https://dev.to/codebangkok/how-to-create-gemini-api-key-486b)
-- [Jira API Token](https://dev.to/codebangkok/create-jira-api-token-2oad)
+- [Atlassian API Token](https://dev.to/codebangkok/create-atlassian-api-token-2kai)
 - [SerpApi Key (Google Search API)](https://dev.to/codebangkok/create-serpapi-google-search-api-key-1nn3)
 - [Qdrant API Key](https://dev.to/codebangkok/qdrant-create-free-cluster-ii6)
 - [Figma Access Token](https://dev.to/codebangkok/create-fixma-api-key-e80)
 - [GitLab Access Token](https://dev.to/codebangkok/create-gitlab-access-token-47n9)
 - [Pinecone API Key and Index](https://dev.to/codebangkok/create-pinecone-api-key-and-index-467n)
+
+### Community Nodes
+- [Confluence](https://dev.to/codebangkok/n8n-community-node-confluence-40o7)
 
 ### n8n Cheat Sheet
 - [Cheat Sheet Dashboard](https://openerpsolutions.co.uk/n8n_cheetsheet.html)
