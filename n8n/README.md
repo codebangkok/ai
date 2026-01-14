@@ -2,6 +2,13 @@
 
 ## Resources
 
+### Videos - YouTube
+- [คอร์ส n8n ตอนที่ 1 เรื่อง AI Agent](https://youtu.be/A9MFuu8FJ3w)
+- [คอร์ส n8n ตอนที่ 2 เรื่องสร้าง Wokflow สำหรับเช็ค Email เพื่อให้ AI Agent ทำการสรุป Email แล้วส่งให้ข้อความไปที่ Discord](https://youtu.be/mEI6nPgpZoo)
+- [คอร์ส n8n ตอนที่ 3 เรื่องการทำ Embedding Data จากไฟล์ที่อัพโหลดขึ้น Google Drive แล้วใช้ AI Embedding Model แปลงเอกสารเป็น Vector แล้วเก็บลง Vector Database](https://youtu.be/ldpxhkQAnc8)
+- [คอร์ส n8n ตอนที่ 4 เรื่องการทำ RAG (Retrieval-Augmented Generation) จาก Vector Database เพิ่อนำข้อมูลมาให้ AI Agent ทำการตอบกลับ User](https://youtu.be/Pgl10zHkDIM)
+- [คอร์ส n8n ตอนที่ 5 เรื่อง MCP (Model Context Protocol) สร้าง MCP Server ให้บริการ Weather API ผ่านโปรโตคอล MCP แล้วให้ AI Agent ใช้ MCP Client แทนการใช้ HTTP Request Tool](https://youtu.be/RlS5l5klfCU)
+
 ### n8n - Action
 - [Google Gmail - Send a message](https://dev.to/codebangkok/n8n-gmail-send-a-message-ng1)
 - [Google Sheets - Append row in sheet](https://dev.to/codebangkok/n8n-google-sheets-append-row-in-sheet-ode)
@@ -54,15 +61,17 @@
 ### Community Nodes
 - [Confluence](https://dev.to/codebangkok/n8n-community-node-confluence-40o7)
 
+### Tip and Trick
+- [n8n: Code Node - Import external library (Python & JavaScript)](https://dev.to/codebangkok/n8n-code-node-import-external-library-python-javascript-4lp7)
+- [แชร์เทคนิคการติดตั้ง Self-Host และการใช้ MCP บน n8n](https://www.youtube.com/watch?v=po9hapYr8-0)
+- [n8n Runner external mode](https://docs.n8n.io/hosting/configuration/task-runners/#setting-up-external-mode)
+
+
 ### n8n Cheat Sheet
 - [Cheat Sheet Dashboard](https://openerpsolutions.co.uk/n8n_cheetsheet.html)
 
 ![n8n Cheat Sheet](n8nCheatSheet.png)
 
-### Resource
-
-- [แชร์เทคนิคการติดตั้ง Self-Host และการใช้ MCP บน n8n](https://www.youtube.com/watch?v=po9hapYr8-0)
-- [n8n Runner external mode](https://docs.n8n.io/hosting/configuration/task-runners/#setting-up-external-mode)
 
 ### Prompt Engineering
 
