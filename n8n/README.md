@@ -23,6 +23,7 @@
 ### n8n - Credential
 - [Atlassian Credentials account](https://dev.to/codebangkok/n8n-credential-atlassian-credentials-account-346l)
 - [Jira SW Cloud account](https://dev.to/codebangkok/n8n-credential-jira-sw-cloud-api-n7f)
+- [LiteLLM account](https://dev.to/codebangkok/n8n-credential-litellm-account-51je)
 - [OpenAI account](https://dev.to/codebangkok/n8n-credential-openai-account-3b1h)
 - [Google Gemini API account](https://dev.to/codebangkok/n8n-how-to-create-credential-google-gemini-api-12p8)
 - [Google Gmail account](https://dev.to/codebangkok/n8n-how-to-create-credential-gmail-account-166e)
@@ -60,6 +61,7 @@
 
 ### Community Nodes
 - [Confluence](https://dev.to/codebangkok/n8n-community-node-confluence-40o7)
+- [LiteLLM](https://dev.to/codebangkok/n8n-community-node-litellm-5abe)
 
 ### Tip and Trick
 - [n8n: Code Node - Import external library (Python & JavaScript)](https://dev.to/codebangkok/n8n-code-node-import-external-library-python-javascript-4lp7)
