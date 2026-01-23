@@ -1,0 +1,173 @@
+{
+  "name": "02 - Email Summarize",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "filters": {
+          "q": "subject:[Alpha Makeathon]",
+          "readStatus": "unread"
+        }
+      },
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "5eeb0bb9-3696-4c13-a5f4-a7edb13e9c9f",
+      "name": "Gmail Trigger",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "jFP0uKLc99wDvU8y",
+          "name": "Gmail account - Bond"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "markAsRead",
+        "messageId": "={{ $json.id }}"
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "112b808c-45a3-4986-8b83-1e37de732801",
+      "name": "Mark a message as read",
+      "webhookId": "5e775f9b-b480-4515-aaf3-c2a2bc262583",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "jFP0uKLc99wDvU8y",
+          "name": "Gmail account - Bond"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Gmail Trigger').item.json.snippet }}",
+        "options": {
+          "systemMessage": "Summarize following text"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        416,
+        0
+      ],
+      "id": "86ccb6e2-2a97-447b-ad5c-dce098c3792f",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAzureOpenAi",
+      "typeVersion": 1,
+      "position": [
+        416,
+        208
+      ],
+      "id": "11665a66-c480-4fb0-a283-3716a24dca68",
+      "name": "Azure OpenAI Chat Model",
+      "credentials": {
+        "azureOpenAiApi": {
+          "id": "Q5SD3ooWc5Cn23cC",
+          "name": "Azure Open AI account - Bond"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "webhook",
+        "content": "={{ $json.output }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        768,
+        0
+      ],
+      "id": "8e990577-34f3-4fee-b1bc-2953a689e71b",
+      "name": "Discord",
+      "webhookId": "d6be5543-ca3f-4608-8cb1-24b70ff4cf9a",
+      "credentials": {
+        "discordWebhookApi": {
+          "id": "zjGLwu47XsFbTw9Z",
+          "name": "Discord Webhook account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Gmail Trigger": {
+      "main": [
+        [
+          {
+            "node": "Mark a message as read",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mark a message as read": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Azure OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Discord",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "41b82816-c35d-434b-9230-e6a12700b382",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ee5edca9416beed08d06915105e46640c3ae110aa9ff064d91fafb6c029cb71a"
+  },
+  "id": "drSlGsD4zy6KpIxs",
+  "tags": []
+}

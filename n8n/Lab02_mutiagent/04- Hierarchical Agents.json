@@ -1,0 +1,309 @@
+{
+  "name": "04- Hierarchical Agents",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "42616826-4294-4676-aedb-35b1577d5743",
+      "name": "When chat message received",
+      "webhookId": "2609ac25-f863-4951-891b-62c4878ac8ce"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "# Persona\nคุณเป็นผู้ช่วยจดบันทึกค่าใช้จ่าย\n\n# Instruction\nจดบันทึกค่าใช้จ่าย"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        208,
+        0
+      ],
+      "id": "8fe0ea60-ecce-4657-870e-61d43ea3cd30",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        80,
+        208
+      ],
+      "id": "50c67628-90de-4281-a8b5-42ff792a64e6",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "6xqOCDswiNtQaELh",
+          "name": "Google Gemini - Infinitas"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        224,
+        208
+      ],
+      "id": "9c38a88f-e5a0-4196-8ba5-bcf3cbcbd8d5",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "description": "call this tool to save the expense to income to database",
+        "workflowId": {
+          "__rl": true,
+          "value": "4NxfdF2WS4cTGpgW-0Fz1",
+          "mode": "id",
+          "cachedResultUrl": "/workflow/4NxfdF2WS4cTGpgW-0Fz1"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        368,
+        208
+      ],
+      "id": "7b51a89d-5358-4d0e-81a5-00e2858a2d7a",
+      "name": "Call 'Workflow Tool'"
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -32,
+        416
+      ],
+      "id": "a3ca519f-98a0-48ca-bc7a-855b6b7147cb",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "text": "=Convert expense to JSON\n\n{{ $json.query }}",
+        "attributes": {
+          "attributes": [
+            {
+              "name": "cost",
+              "type": "number",
+              "description": "จำนวนเงิน",
+              "required": true
+            },
+            {
+              "name": "description",
+              "description": "รายละเอียด",
+              "required": true
+            },
+            {
+              "name": "date",
+              "type": "date",
+              "description": "วันที่",
+              "required": true
+            },
+            {
+              "name": "type",
+              "description": "\"รายรับ\" หรือ \"รายจ่าย\"",
+              "required": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.informationExtractor",
+      "typeVersion": 1.2,
+      "position": [
+        176,
+        416
+      ],
+      "id": "38c36266-c0e1-4ec5-9fa9-d798bce0ca35",
+      "name": "Information Extractor"
+    },
+    {
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "value": "2qzXTeSIBRFOe2xR",
+          "mode": "list",
+          "cachedResultName": "Demo - Expense",
+          "cachedResultUrl": "/projects/ub0gHsXZWtLuH4Lq/datatables/2qzXTeSIBRFOe2xR"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Description": "={{ $json.output.description }}",
+            "Cost": "={{ $json.output.cost }}",
+            "Date": "={{ $json.output.date }}",
+            "Type": "={{ $json.output.type }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Description",
+              "displayName": "Description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Cost",
+              "displayName": "Cost",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Type",
+              "displayName": "Type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        528,
+        416
+      ],
+      "id": "4b39f32a-e68a-4fee-b672-5b03ef619c45",
+      "name": "Insert row"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Information Extractor",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call 'Workflow Tool'": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        []
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Information Extractor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Information Extractor": {
+      "main": [
+        [
+          {
+            "node": "Insert row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "b2072643-fc46-4096-87a4-bd2464a3af13",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ee5edca9416beed08d06915105e46640c3ae110aa9ff064d91fafb6c029cb71a"
+  },
+  "id": "4NxfdF2WS4cTGpgW-0Fz1",
+  "tags": []
+}

@@ -1,0 +1,332 @@
+{
+  "name": "02 - Parallel Agents",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Onboarding System",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Name",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Email",
+              "fieldType": "email",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Role",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Software Engineer"
+                  },
+                  {
+                    "option": "Product Owner"
+                  },
+                  {
+                    "option": "Business Analysis"
+                  },
+                  {
+                    "option": "Platform Engineer"
+                  }
+                ]
+              },
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Hobby",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Shopping"
+                  },
+                  {
+                    "option": "Game"
+                  },
+                  {
+                    "option": "Sport"
+                  },
+                  {
+                    "option": "Reading"
+                  }
+                ]
+              },
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.5,
+      "position": [
+        0,
+        160
+      ],
+      "id": "9d81898b-1486-49dc-88a1-aef7a62686f5",
+      "name": "On form submission",
+      "webhookId": "a9ce0647-9311-4f15-8485-3ea510d1ac45"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        240,
+        128
+      ],
+      "id": "9bb771b8-17d3-46f2-a6b5-33ad95ffd023",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "6xqOCDswiNtQaELh",
+          "name": "Google Gemini - Infinitas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Name: {{ $json.Name }}\nRole: {{ $json.Role }}\nHobby: {{ $json.Hobby }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=# Persona\nคุณเป็นตัวแทนฝ่ายบุคคลของบริษัท CodeBangkok ซึ่งเป็นบริษัทด้านระบบอัตโนมัติด้วย AI ที่เชี่ยวชาญในการช่วยเหลือธุรกิจขนาดกลางและขนาดย่อม (SME) ในการนำ AI Agent และโซลูชันระบบอัตโนมัติด้วย AI ไปใช้ \n\n# Instruction\nเขียนอีเมลต้อนรับที่อบอุ่นและเป็นมืออาชีพสำหรับพนักงานใหม่ โดยใช้ข้อมูลที่ให้มา ข้อความควรเป็นมิตร กระชับ และเป็นส่วนตัว แต่ยังคงความเป็นมืออาชีพไว้ ควรสะท้อนถึงบทบาทของพนักงานและเป้าหมายในการร่วมงานกับเรา\nลงชื่อ สุรศักย์ อัครอมรพงศ์ CodeBangkok\n\n# Output Format\nSubject: The email’s subject line\nBody: The main email content in HTML format\n\n# Constraints\nห้ามใช้ข้อความตัวอย่าง เช่น [ชื่อของคุณ] หรือ [ข้อมูลติดต่อของคุณ] ในทุกกรณี แม้ว่าข้อมูลบางส่วนจะไม่ครบถ้วนก็ตาม"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        224,
+        -96
+      ],
+      "id": "5b5fe018-c101-45bf-8e10-17eb269c3809",
+      "name": "Email Agent"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('On form submission').item.json.Email }}",
+        "subject": "={{ $json.output.Subject }}",
+        "message": "={{ $json.output.Body }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        576,
+        16
+      ],
+      "id": "ce3bb9c6-e9e0-4bf0-88e0-12f2b530241a",
+      "name": "Send a message",
+      "webhookId": "f1d70d97-8d9e-4e8f-a518-e5753d7cd3b0",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "jFP0uKLc99wDvU8y",
+          "name": "Gmail account - Bond"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n\t\"Subject\": \"\",\n    \"Body\": \"\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        368,
+        128
+      ],
+      "id": "b6db617b-0fcf-480f-9ac4-82526b7ee05b",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Name: {{ $json.Name }}\nRole: {{ $json.Role }}\nHobby: {{ $json.Hobby }}",
+        "options": {
+          "systemMessage": "=# Persona\nคุณเป็นตัวแทนฝ่ายบุคคลของบริษัท CodeBangkok ซึ่งเป็นบริษัทด้านระบบอัตโนมัติด้วย AI ที่เชี่ยวชาญในการช่วยเหลือธุรกิจขนาดกลางและขนาดย่อม (SME) ในการนำ AI Agent และโซลูชันระบบอัตโนมัติด้วย AI ไปใช้ \n\n# Instruction\nเขียนสรุปข้อมูลโปรไฟล์ของพนักงานโดยย่อโดยอิงจากข้อมูลที่ให้ไว้\nลงชื่อ สุรศักย์ อัครอมรพงศ์ CodeBangkok"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        224,
+        304
+      ],
+      "id": "6ded5085-57c9-4ded-9ccd-9f0bfed0c2ae",
+      "name": "Summary Agent"
+    },
+    {
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "value": "ltk72y0s2iT6Demr",
+          "mode": "list",
+          "cachedResultName": "Demo - Onboard",
+          "cachedResultUrl": "/projects/ub0gHsXZWtLuH4Lq/datatables/ltk72y0s2iT6Demr"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $('On form submission').item.json.Name }}",
+            "Email": "={{ $('On form submission').item.json.Email }}",
+            "Role": "={{ $('On form submission').item.json.Role }}",
+            "Hobby": "={{ $('On form submission').item.json.Hobby }}",
+            "Summary": "={{ $json.output }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Role",
+              "displayName": "Role",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Hobby",
+              "displayName": "Hobby",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Summary",
+              "displayName": "Summary",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        576,
+        304
+      ],
+      "id": "4175257e-9530-4376-b026-cba5fb3117eb",
+      "name": "Insert row"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Email Agent",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Summary Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Email Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Summary Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Email Agent": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Email Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summary Agent": {
+      "main": [
+        [
+          {
+            "node": "Insert row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "8eb4eb9f-3fd1-483a-96ca-9ab95e698de7",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ee5edca9416beed08d06915105e46640c3ae110aa9ff064d91fafb6c029cb71a"
+  },
+  "id": "cwcNxQ8bysWQsmYDUag8E",
+  "tags": []
+}

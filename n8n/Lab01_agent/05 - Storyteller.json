@@ -1,0 +1,147 @@
+{
+  "name": "05 - Storyteller",
+  "nodes": [
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "responses": {
+          "values": [
+            {
+              "content": "=แต่งนิทานเรื่อง{{ $json['เรื่อง'] }}\nแนว{{ $json['แนว'] }}"
+            },
+            {
+              "role": "system",
+              "content": "ตอบสั้นๆ จำนวน 1 ย่อหน้า"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        192,
+        0
+      ],
+      "id": "c0e5613f-f502-442c-a705-77ed353be30a",
+      "name": "Message a model",
+      "credentials": {
+        "openAiApi": {
+          "id": "UMU6cRPop7t4hNOO",
+          "name": "OpenAi account - Bond"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "formTitle": "Storyteller",
+        "formFields": {
+          "values": [
+            {
+              "fieldName": "เรื่อง",
+              "fieldLabel": "เรื่อง",
+              "requiredField": true
+            },
+            {
+              "fieldName": "แนว",
+              "fieldLabel": "แนว",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "ตลก"
+                  },
+                  {
+                    "option": "ไซไฟ"
+                  },
+                  {
+                    "option": "ดราม่า"
+                  }
+                ]
+              },
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "64ea0f4d-b991-450d-bc58-d09ef02f8357",
+      "name": "On form submission",
+      "webhookId": "89bb8990-92d5-4c10-b236-7919619d1331"
+    },
+    {
+      "parameters": {
+        "sendTo": "surasuk612@gmail.com",
+        "subject": "Storyteller",
+        "message": "={{ $json.output[0].content[0].text }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        544,
+        0
+      ],
+      "id": "600529bc-e81c-43eb-8c56-cf71fd6016da",
+      "name": "Send a message",
+      "webhookId": "21ce7d6c-f225-4cd3-aea2-47daeb5d0069",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "jFP0uKLc99wDvU8y",
+          "name": "Gmail account - Bond"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "versionId": "e1ee10d6-9334-422b-a5e2-dd1d7644f701",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ee5edca9416beed08d06915105e46640c3ae110aa9ff064d91fafb6c029cb71a"
+  },
+  "id": "Y7NOgscXRX4jydOf",
+  "tags": []
+}

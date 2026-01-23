@@ -1,0 +1,265 @@
+{
+  "name": "03 - Daily News",
+  "nodes": [
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=สรุปข่าวและพยากรณ์อากาศ\n\n# Output format: HTML",
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        288,
+        48
+      ],
+      "id": "be4e3963-5ce3-4946-83ed-7c09669d6ceb",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAzureOpenAi",
+      "typeVersion": 1,
+      "position": [
+        224,
+        272
+      ],
+      "id": "4eed057e-d678-4a9e-8ec3-4cab8f724d23",
+      "name": "Azure OpenAI Chat Model",
+      "credentials": {
+        "azureOpenAiApi": {
+          "id": "Q5SD3ooWc5Cn23cC",
+          "name": "Azure Open AI account - Bond"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "surasuk612@gmail.com",
+        "subject": "สรุปข่าวประจำวัน",
+        "message": "={{ $json.output }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        0,
+        -288
+      ],
+      "id": "7cc70c06-1eb7-40f4-9436-154dab90bf80",
+      "name": "Send a message",
+      "webhookId": "6a904978-8dd1-4746-8b9c-cea4ab8bd4d3",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "jFP0uKLc99wDvU8y",
+          "name": "Gmail account - Bond"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 7
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        48
+      ],
+      "id": "b5d207c0-b532-4598-9e6a-dfaf2309859c",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Weather Forecaster",
+        "url": "https://api.weatherapi.com/v1/current.json",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpQueryAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "q",
+              "value": "Bangkok"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.3,
+      "position": [
+        352,
+        272
+      ],
+      "id": "0bfce607-58ae-41da-8ae5-a30740b8af12",
+      "name": "Weather",
+      "credentials": {
+        "httpQueryAuth": {
+          "id": "twxH2LcXlKADQ4qP",
+          "name": "Query Auth - Weather API - Bond"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "toolDescription": "News",
+        "url": "https://www.blognone.com/node/feed",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.3,
+      "position": [
+        480,
+        272
+      ],
+      "id": "55d0c2ec-5a62-47b7-a8b4-4379e53fd9e6",
+      "name": "News"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "LUMVIZXA21EN0uwS",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/LUMVIZXA21EN0uwS",
+          "cachedResultName": "Send Mesage Sub Workflow"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "To": "surasuk612@gmail.com",
+            "Subject": "สรุปข่าวประจำวัน",
+            "Message": "={{ $json.output }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "To",
+              "displayName": "To",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Subject",
+              "displayName": "Subject",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Message",
+              "displayName": "Message",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        688,
+        48
+      ],
+      "id": "9650786d-11a0-4be7-bb3d-da59945f310b",
+      "name": "Call 'Send Mesage Sub Workflow'"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Azure OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Call 'Send Mesage Sub Workflow'",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Weather": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "News": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "d78fa7dc-5877-40ef-9c15-669c5af871a0",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ee5edca9416beed08d06915105e46640c3ae110aa9ff064d91fafb6c029cb71a"
+  },
+  "id": "0zHmXJXNJhz76byc",
+  "tags": []
+}

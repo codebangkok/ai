@@ -1,0 +1,114 @@
+{
+  "name": "09 - MCP Client - Weather",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "d06833bd-2b7c-4ddb-ac46-b3a899c54f92",
+      "name": "When chat message received",
+      "webhookId": "5f88468d-fd96-4c45-93c0-b50d5cce41fc"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        208,
+        0
+      ],
+      "id": "693eb62e-ee51-4e2a-a5b3-c92b10329b2c",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAzureOpenAi",
+      "typeVersion": 1,
+      "position": [
+        80,
+        208
+      ],
+      "id": "e3b50227-6934-4945-a7cc-4bee20329fcd",
+      "name": "Azure OpenAI Chat Model",
+      "credentials": {
+        "azureOpenAiApi": {
+          "id": "Q5SD3ooWc5Cn23cC",
+          "name": "Azure Open AI account - Bond"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "endpointUrl": "https://codebangkok.com/mcp/76158e85-327f-4510-94b7-5e8151f57fbc",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
+      "typeVersion": 1.2,
+      "position": [
+        416,
+        224
+      ],
+      "id": "65d44081-f5b6-4207-8d1e-875ee7930ac9",
+      "name": "MCP Client"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Azure OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MCP Client": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "5118ef4f-5f68-4c2d-b6f8-6f59bb6bf4dc",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ee5edca9416beed08d06915105e46640c3ae110aa9ff064d91fafb6c029cb71a"
+  },
+  "id": "WjrJnksJEx9gL8zdY_1bX",
+  "tags": []
+}

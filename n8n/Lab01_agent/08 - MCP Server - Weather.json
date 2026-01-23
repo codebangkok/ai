@@ -1,0 +1,75 @@
+{
+  "name": "08 - MCP Server - Weather",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "76158e85-327f-4510-94b7-5e8151f57fbc"
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpTrigger",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "6076d92c-98d3-4df2-8146-30602e04193a",
+      "name": "MCP Server Trigger",
+      "webhookId": "76158e85-327f-4510-94b7-5e8151f57fbc"
+    },
+    {
+      "parameters": {
+        "url": "https://api.weatherapi.com/v1/current.json",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpQueryAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "q",
+              "value": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('parameters0_Value', ``, 'string') }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.3,
+      "position": [
+        96,
+        208
+      ],
+      "id": "f512783d-f69e-46f8-b9cc-76ba8e772942",
+      "name": "HTTP Request",
+      "credentials": {
+        "httpQueryAuth": {
+          "id": "twxH2LcXlKADQ4qP",
+          "name": "Query Auth - Weather API - Bond"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "HTTP Request": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "d9cb8b9a-52fc-4f3c-abce-ae3ded0c4b3d",
+  "meta": {
+    "instanceId": "ee5edca9416beed08d06915105e46640c3ae110aa9ff064d91fafb6c029cb71a"
+  },
+  "id": "hKFicqwMAKlJgYQzBSPEa",
+  "tags": []
+}

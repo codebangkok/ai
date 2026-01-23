@@ -1,0 +1,113 @@
+{
+  "name": "04 - Generate an Image",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "fb1d3a2e-cf05-4303-a5e1-626c1972fc9f",
+      "name": "When chat message received",
+      "webhookId": "85cd88e7-6880-415f-b361-ee540869c8fb"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-2.5-flash-image",
+          "mode": "list",
+          "cachedResultName": "models/gemini-2.5-flash-image (Nano Banana)"
+        },
+        "prompt": "={{ $json.chatInput }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        208,
+        0
+      ],
+      "id": "45281976-f810-408e-b279-086e8c4a3c9f",
+      "name": "Generate an image",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "XPLdd08es0XH14Nc",
+          "name": "Google Gemini Api - Surasuk"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "surasuk612@gmail.com",
+        "subject": "Generate an Image with Nano Banana",
+        "emailType": "text",
+        "message": "={{ $('When chat message received').item.json.chatInput }}",
+        "options": {
+          "attachmentsUi": {
+            "attachmentsBinary": [
+              {}
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        416,
+        0
+      ],
+      "id": "11b64618-9ee0-425a-b7a4-c01f8866c780",
+      "name": "Send a message",
+      "webhookId": "f3211a48-3f64-44ab-bc9f-5cea0c2cbeee",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "jFP0uKLc99wDvU8y",
+          "name": "Gmail account - Bond"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Generate an image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate an image": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "f75ad8a8-a69d-4454-83ee-c1f40448b013",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ee5edca9416beed08d06915105e46640c3ae110aa9ff064d91fafb6c029cb71a"
+  },
+  "id": "ByrRjvct4JrGaNzf",
+  "tags": []
+}

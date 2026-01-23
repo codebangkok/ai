@@ -1,0 +1,209 @@
+{
+  "name": "01 - Chain of Agents",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        256,
+        224
+      ],
+      "id": "d09ad6b5-b7b4-4773-a262-5db7b8c0bb39",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "6xqOCDswiNtQaELh",
+          "name": "Google Gemini - Infinitas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=โครงร่างการเชียนบทความ:\n\n{{ $json.output }}",
+        "options": {
+          "systemMessage": "# Persona\nคุณเป็นนักเขียนบทความมืออาชีพ \n\n# Instruction\nจงเขียนบทความบทความโดยกระชับ ใช้โครงร่างที่ให้มา พร้อมด้วยย่อหน้าที่จัดเรียงอย่างดีและเนื้อหาที่น่าสนใจ โดยเนื้อหาจะต้องอ้างอิงข้อมูลข่าวสารล่าสุด\n\n# Output Format \nHTML email  \n\n# Constraints\nReturn only HTML code, do not include ```html"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        592,
+        -32
+      ],
+      "id": "70b42377-44e1-4bc5-943e-36f0ef0c33ab",
+      "name": "Writer"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolSerpApi",
+      "typeVersion": 1,
+      "position": [
+        736,
+        192
+      ],
+      "id": "65bb4681-ce63-494d-8fec-a7b4110a6687",
+      "name": "SerpAPI",
+      "credentials": {
+        "serpApi": {
+          "id": "1OmyeZOdnBGEF03D",
+          "name": "SerpAPI account - Bond"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "formTitle": "Blog Creator",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Topic"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.5,
+      "position": [
+        16,
+        -32
+      ],
+      "id": "a628be8a-53e9-4b42-850f-76dd966ea854",
+      "name": "On form submission",
+      "webhookId": "e3ae8458-637b-42f4-9e82-1b1f49318f91"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=หัวข้อ: {{ $json.Topic }}",
+        "options": {
+          "systemMessage": "# Persona\nคุณเป็นผู้เชี่ยวชาญด้านการเขียนโครงร่างบทความ\n\n# Instruction\nสร้างโครงร่างที่มีโครงสร้างสำหรับบทความ โดยมีหัวข้อแต่ละส่วนและประเด็นสำคัญ"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        240,
+        -32
+      ],
+      "id": "62d67966-811c-4535-915a-8912fa021acb",
+      "name": "Story Planner"
+    },
+    {
+      "parameters": {
+        "sendTo": "surasuk612@gmail.com",
+        "subject": "={{ $('On form submission').item.json.Topic }}",
+        "message": "={{ $json.output }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        944,
+        -32
+      ],
+      "id": "88030c50-a48b-4e19-b972-d9cf8a311e1f",
+      "name": "Send a message",
+      "webhookId": "903633ca-4d74-41b8-9238-68f6ddde2dac",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "jFP0uKLc99wDvU8y",
+          "name": "Gmail account - Bond"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "On form submission": [
+      {
+        "json": {
+          "Topic": "วิเคราะห์การเลือกตั้งประเทศไทยปี 2569",
+          "submittedAt": "2026-01-20T00:04:27.633+07:00",
+          "formMode": "test"
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Story Planner",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Writer",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Writer": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SerpAPI": {
+      "ai_tool": [
+        [
+          {
+            "node": "Writer",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Story Planner",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Story Planner": {
+      "main": [
+        [
+          {
+            "node": "Writer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "95ffe628-fde9-4df6-a617-7b4b134cc6b6",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ee5edca9416beed08d06915105e46640c3ae110aa9ff064d91fafb6c029cb71a"
+  },
+  "id": "UPSoB-FZ7WHdYSWvznw8x",
+  "tags": []
+}
