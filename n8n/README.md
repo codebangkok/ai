@@ -3,6 +3,7 @@
 ## Resources
 
 ### Videos - YouTube
+- [n8n YouTube Playlist](https://www.youtube.com/playlist?list=PLyZTXfAT27ibzZiVWwCF_i7jhpO7ryKW-)
 - [คอร์ส n8n ตอนที่ 1 เรื่อง AI Agent](https://youtu.be/A9MFuu8FJ3w)
 - [คอร์ส n8n ตอนที่ 2 เรื่องสร้าง Wokflow สำหรับเช็ค Email เพื่อให้ AI Agent ทำการสรุป Email แล้วส่งให้ข้อความไปที่ Discord](https://youtu.be/mEI6nPgpZoo)
 - [คอร์ส n8n ตอนที่ 3 เรื่องการทำ Embedding Data จากไฟล์ที่อัพโหลดขึ้น Google Drive แล้วใช้ AI Embedding Model แปลงเอกสารเป็น Vector แล้วเก็บลง Vector Database](https://youtu.be/ldpxhkQAnc8)
@@ -16,6 +17,7 @@
 - [Microsoft Teams - Channel - Create message](https://dev.to/codebangkok/n8n-microsoft-teams-create-channel-message-57c5)
 - [Microsoft Excel - Append data to sheet](https://dev.to/codebangkok/n8n-microsoft-excel-365-append-data-to-sheet-2dp4)
 - [Confluence - AI Agent Chat with Page Content Grounding](https://dev.to/codebangkok/n8n-confluence-ai-agent-chat-with-page-content-grounding-40h9)
+- [Line Messaging - Send a message](https://dev.to/codebangkok/n8n-line-messaging-send-a-message-lmi)
 
 ### n8n - Triggers
 - [On form submission](https://dev.to/codebangkok/n8n-on-form-submission-5aha)
@@ -41,6 +43,7 @@
 - [SerpAPI account (Google Search API)](https://dev.to/codebangkok/n8n-credential-serpapi-account-google-search-api-23jb)
 - [Figma account](https://dev.to/codebangkok/n8n-credential-figma-account-3lfg)
 - [GitLab account](https://dev.to/codebangkok/n8n-credential-gitlab-account-53i7)
+- [Line Messaging account](https://dev.to/codebangkok/n8n-credential-line-messaging-account-1d91)
 
 ### n8n - Setting
 - [n8n.io Sign Up](https://dev.to/codebangkok/n8n-sign-up-5af)
@@ -62,6 +65,11 @@
 ### Community Nodes
 - [Confluence](https://dev.to/codebangkok/n8n-community-node-confluence-40o7)
 - [LiteLLM](https://dev.to/codebangkok/n8n-community-node-litellm-5abe)
+- [Line Messaging](https://dev.to/codebangkok/n8n-community-node-line-messaging-5ad8)
+
+### Line Official Account
+- [Create Line Official Account](https://dev.to/codebangkok/line-oa-create-new-account-4h2e)
+- [Enable Line Messaging API](https://dev.to/codebangkok/line-oa-enable-messaging-api-57dk)
 
 ### Tip and Trick
 - [n8n: Code Node - Import external library (Python & JavaScript)](https://dev.to/codebangkok/n8n-code-node-import-external-library-python-javascript-4lp7)

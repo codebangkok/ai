@@ -1,6 +1,6 @@
 # Guardrails
 
-### OWASP Top 10:2025
+### [OWASP Top 10:2025](https://owasp.org/Top10/2025)
 - [A01 (Broken Access Control)](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control) - URL validation and management
 - [A04 (Cryptographic Failures)](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures) - PII and secret detection
 - [A05 (Injection)](https://owasp.org/Top10/2025/A05_2025-Injection) - Keyword blocking, URL validation, regex patterns
