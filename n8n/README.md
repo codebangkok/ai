@@ -61,6 +61,8 @@
 - [Figma Access Token](https://dev.to/codebangkok/create-fixma-api-key-e80)
 - [GitLab Access Token](https://dev.to/codebangkok/create-gitlab-access-token-47n9)
 - [Pinecone API Key and Index](https://dev.to/codebangkok/create-pinecone-api-key-and-index-467n)
+- [Telegram: API bot access token](https://dev.to/codebangkok/telegram-api-bot-access-token-1k46)
+
 
 ### Community Nodes
 - [Confluence](https://dev.to/codebangkok/n8n-community-node-confluence-40o7)
@@ -75,6 +77,8 @@
 - [n8n: Code Node - Import external library (Python & JavaScript)](https://dev.to/codebangkok/n8n-code-node-import-external-library-python-javascript-4lp7)
 - [แชร์เทคนิคการติดตั้ง Self-Host และการใช้ MCP บน n8n](https://www.youtube.com/watch?v=po9hapYr8-0)
 - [n8n Runner external mode](https://docs.n8n.io/hosting/configuration/task-runners/#setting-up-external-mode)
+- [Telegram Fix can't parse entities](https://dev.to/codebangkok/n8n-telegram-cant-parse-entities-1b39)
+
 
 
 ### n8n Cheat Sheet
