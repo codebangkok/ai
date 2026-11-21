@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "skills": {
+    "apple-notes": {
+      "source": "NousResearch/hermes-agent",
+      "commit": "2de9f51b8008a7d49a49221c184f2f11cbfc4af1",
+      "sourceType": "github",
+      "skillPath": "skills/apple/apple-notes/SKILL.md",
+      "computedHash": "4c9735dc7974e8f74f17eaf7b05a1fa7dd5332e6dcf9f43258536d09edfde231"
+    },
+    "apple-reminders": {
+      "source": "openclaw/openclaw",
+      "commit": "899f48ffc6933e10712a47a136b371cce755e88e",
+      "sourceType": "github",
+      "skillPath": "skills/apple-reminders/SKILL.md",
+      "computedHash": "a972e41aa1e3f26d4f459fa172a3ff18c4cba46e0b1cc5d4428457354be06a6d",
+      "installMode": "copy"
+    },
+    "arxiv": {
+      "source": "NousResearch/hermes-agent",
+      "commit": "2de9f51b8008a7d49a49221c184f2f11cbfc4af1",
+      "sourceType": "github",
+      "skillPath": "skills/research/arxiv/SKILL.md",
+      "computedHash": "08116f0b381ab269e9e4480f0516625bd451673a0166598f6f18a89ef3240400"
+    }
+  }
+}

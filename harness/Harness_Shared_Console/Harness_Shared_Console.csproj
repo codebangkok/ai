@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net10.0</TargetFrameworks>
+
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Agents.AI" Version="1.28.0" />
+    <PackageReference Include="OpenTelemetry" Version="1.21.0" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.21.0" />    
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ConsoleReactiveFramework\ConsoleReactiveFramework.csproj" />
+    <ProjectReference Include="..\ConsoleReactiveComponents\ConsoleReactiveComponents.csproj" />
+  </ItemGroup>
+
+</Project>

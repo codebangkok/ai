@@ -1,0 +1,3 @@
+﻿# Memory Index
+
+- **bob-products-plan.md**: ผลการกรองรายชื่อสินค้าที่ Bob ขายจาก sales.csv จำนวน 6 รายการ

@@ -1,0 +1,1 @@
+﻿Completed verified selection of three quantum computing papers with dates, primary-source links and summaries.
